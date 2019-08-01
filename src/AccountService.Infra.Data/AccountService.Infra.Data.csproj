@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\netcoreapp2.2\AccountService.Infra.Data.deps.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netcoreapp2.2\AccountService.Domain.dll" />
+    <None Include="bin\Debug\netcoreapp2.2\AccountService.Domain.pdb" />
+    <None Include="bin\Debug\netcoreapp2.2\AccountService.Infra.Data.dll" />
+    <None Include="bin\Debug\netcoreapp2.2\AccountService.Infra.Data.pdb" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Swashbuckle" Version="5.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AccountService.Domain\AccountService.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
