@@ -1,20 +1,26 @@
-FROM microsoft/dotnet:2.2-aspnetcore-runtime AS base
+FROM microsoft/dotnet:sdk AS build-env
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+COPY *.csproj ./
+RUN dotnet restore
+COPY . ./
+RUN dotnet publish -c Release -o out
 
-FROM microsoft/dotnet:2.2-sdk AS build
+# --===\\ BASEBUILD // ===-- #
+FROM basesdk AS basebuild
+
 WORKDIR /src
-COPY ["src/AccountService.Services.Api/AccountService.Services.Api.csproj", "src/AccountService.Services.Api/"]
-RUN dotnet restore "src/AccountService.Services.Api/AccountService.Services.Api.csproj"
-COPY . .
-WORKDIR "/src/src/AccountService.Services.Api"
-RUN dotnet build "AccountService.Services.Api.csproj" -c Release -o /app
 
-FROM build AS publish
-RUN dotnet publish "AccountService.Services.Api.csproj" -c Release -o /app
+COPY Nuget.config Nuget.config
+# Projects
+COPY Application/AccountService.Application/AccountService.Application.csproj AccountService.Application/
+COPY AccountService.Domain/AccountService.Domain.csproj AccountService.Domain/
+COPY AccountService.Infra.Data/AccountService.Infra.Data.csproj AccountService.Infra.Data/
+COPY AccountService.Infra.IoC/AccountService.Infra.IoC.csproj AccountService.Infra.IoC/
+COPY AccountService.Services.Api/AccountService.Services.Api.csproj AccountService.Services.Api/
 
-FROM base AS final
+# Build image runtime!
+FROM microsoft/dotnet:aspnetcore-runtime
+MAINTAINER romulo.perlotti@fh.com
 WORKDIR /app
-COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "AccountService.Services.Api.dll"]
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "WebApp.dll"]
