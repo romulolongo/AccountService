@@ -1,9 +1,6 @@
 ﻿using AccountServices.Infra.Data.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AccountServices.Infra.Data.Context
 {
@@ -27,7 +24,5 @@ namespace AccountServices.Infra.Data.Context
         {
             modelBuilder.ApplyConfiguration(new AccountMapping());
         }
-
-
     }
 }

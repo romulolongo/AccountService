@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AccountService.Application.Accounts.Mappers;
+﻿using AccountService.Application.Accounts.Mappers;
 using AccountService.Infra.IoC;
 using AccountServices.Infra.Data.Context;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using SimpleInjector;
 
 namespace AccountService.Services.Api
 {
     public class Startup
     {
+        private Container container = new Container();
+
         public Startup(IConfiguration configuration)
         {
+            container.Options.ResolveUnregisteredConcreteTypes = false;
             Configuration = configuration;
         }
 
@@ -29,11 +26,14 @@ namespace AccountService.Services.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var ioc = new IoC();
 
-            ioc.RegisterInjectionDepedecy(services);
+            services.AddSimpleInjector(container, options =>
+            {
+                options.AddAspNetCore();
 
-            services.AddDbContext<AccountContext>();
+            });
+
+            container.RegisterServices();
 
             var mappingConfig = new MapperConfiguration(mc =>
             {
