@@ -1,5 +1,6 @@
 ﻿using AccountService.Application.Accounts.Interfaces;
 using AccountService.Application.Accounts.Requests;
+using AccountService.Application.Accounts.Responses;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -32,7 +33,8 @@ namespace AccountServices.Services.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return Ok(await _accountAppService.GetAllAsync());
+            //return Ok(await _accountAppService.GetAllAsync());
+            return Ok(new GetAllAccountResponse());
         }
 
         [HttpPost]
