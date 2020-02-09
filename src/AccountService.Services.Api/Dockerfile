@@ -2,44 +2,27 @@
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
 WORKDIR /app
-EXPOSE 80
+EXPOSE 80 
 
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 
-COPY AccountService.Services.Api.csproj AccountService.Services.Api/
+COPY src/AccountService.Services.Api/AccountService.Services.Api.csproj AccountService.Services.Api/
+#COPY src/AccountService.Domain/AccountService.Domain.csproj AccountService.Domain/
+#COPY src/AccountService.Infra.Data/AccountService.Infra.Data.csproj AccountService.Infra.Data/
+#COPY src/AccountService.Infra.IoC/AccountService.Infra.IoC.csproj AccountService.Infra.IoC/
+#COPY src/AccountService.Application/AccountService.Application.csproj AccountService.Application/
 
-COPY .././AccountService.Domain/AccountService.Domain.csproj AccountService.Domain/
-COPY AccountService.Infra.Data/AccountService.Infra.Data.csproj AccountService.Infra.Data/
-COPY AccountService.Infra.IoC/AccountService.Infra.IoC.csproj AccountService.Infra.IoC/
-COPY AccountService.Application/AccountService.Application.csproj AccountService.Application/
-
-RUN dotnet restore "src/AccountService.Services.Api/AccountService.Services.Api.csproj"
+RUN dotnet restore AccountService.Services.Api/AccountService.Services.Api.csproj
 COPY . .
-WORKDIR "/src/src/AccountService.Services.Api"
-RUN dotnet build "AccountService.Services.Api.csproj" -c Release -o /app/build
+
+WORKDIR /src/AccountService.Services.Api
+
+RUN dotnet build AccountService.Services.Api.csproj -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "AccountService.Services.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish AccountService.Services.Api.csproj -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "AccountService.Services.Api.dll"]
-
-#
-#FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
-#WORKDIR /app
-#
-## Copy csproj and restore as distinct layers
-#COPY *.csproj ./
-#RUN dotnet restore
-#
-## Copy everything else and build
-#COPY . ./
-#RUN dotnet publish -c Release -o out
-#
-## Build runtime image
-#FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
-WORKDIR /app
-COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "aspnetapp.dll"]
-

@@ -5,12 +5,13 @@ namespace AccountService.Infra.IoC
 {
     public static class DependencyInjectionBootStrapper
     {
-        public static void RegisterServices(this Container container)
+        public static void RegisterDependencies(this Container container)
         {
-            UnitOfWorkModule.Register(container);
-            ServicesModule.Register(container);
-            RepositoryModule.Register(container);
-            DbContextModule.Register(container);
+            UnitOfWorkDependencyModule.Register(container);
+            ServicesDependencyModule.Register(container);
+            RepositoryDependencyModule.Register(container);
+            DbContextDependencyModule.Register(container);
+            AutoMapperDependencyModule.Register(container);
         }
 
         #region InjectorAspnet

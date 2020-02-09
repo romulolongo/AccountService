@@ -5,7 +5,7 @@ using SimpleInjector;
 
 namespace AccountService.Infra.IoC.Modules
 {
-    public static class ServicesModule
+    public static class ServicesDependencyModule
     {
         public static void Register(Container container)
         {

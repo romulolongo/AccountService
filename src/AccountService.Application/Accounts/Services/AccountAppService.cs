@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using AccountService.Application.Accounts.Interfaces;
+﻿using AccountService.Application.Accounts.Interfaces;
 using AccountService.Application.Accounts.Requests;
 using AccountService.Application.Accounts.Responses;
 using AccountServices.Domain.Entities;
 using AccountServices.Domain.Interfaces;
 using AccountServices.Domain.Interfaces.Services;
 using AutoMapper;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AccountService.Application.Accounts.Services
 {
@@ -58,7 +58,7 @@ namespace AccountService.Application.Accounts.Services
             }
         }
 
-        public async  Task UpdateAsync(UpdateAccountRequest request)
+        public async Task UpdateAsync(UpdateAccountRequest request)
         {
             using (var unitOfWork = _unitOfWorkFactory.StartUnitOfWork())
             {

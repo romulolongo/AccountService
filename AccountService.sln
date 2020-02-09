@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{47D1C0E7-67C5-4580-8105-B1A91D91B660}"
 EndProject
@@ -13,11 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{38140076
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{8551E891-4BC2-48FE-923D-00381A5F260E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService.Application", "src\AccountService.Application\AccountService.Application.csproj", "{28E5E27D-495E-4FB1-8C8C-113CDDBDBBF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Application", "src\AccountService.Application\AccountService.Application.csproj", "{28E5E27D-495E-4FB1-8C8C-113CDDBDBBF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService.Infra.Data", "src\AccountService.Infra.Data\AccountService.Infra.Data.csproj", "{E4F6E68D-20FB-47B1-BBC0-7439CA5B9247}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Infra.Data", "src\AccountService.Infra.Data\AccountService.Infra.Data.csproj", "{E4F6E68D-20FB-47B1-BBC0-7439CA5B9247}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService.Infra.IoC", "src\AccountService.Infra.IoC\AccountService.Infra.IoC.csproj", "{0D7096C7-FD67-4C78-842D-FEDFDEEE97CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Infra.IoC", "src\AccountService.Infra.IoC\AccountService.Infra.IoC.csproj", "{0D7096C7-FD67-4C78-842D-FEDFDEEE97CB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0FAF2A2B-E415-48B5-B69D-F781981E1B96}"
 EndProject
@@ -27,11 +27,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{DD7407
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{0E3A5638-1D06-4021-ADF6-71EFD39D08F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService.Domain.Tests", "test\AccountService.Domain.Tests\AccountService.Domain.Tests.csproj", "{AEA2ED4A-C3D4-4356-ACF3-17C34E1DA5ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Domain.Tests", "test\AccountService.Domain.Tests\AccountService.Domain.Tests.csproj", "{AEA2ED4A-C3D4-4356-ACF3-17C34E1DA5ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService.Services.Api", "src\AccountService.Services.Api\AccountService.Services.Api.csproj", "{7355630B-659A-41C3-A5F4-77FA39BAA8E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Services.Api", "src\AccountService.Services.Api\AccountService.Services.Api.csproj", "{7355630B-659A-41C3-A5F4-77FA39BAA8E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService.Domain", "src\AccountService.Domain\AccountService.Domain.csproj", "{C370FE14-8C56-4529-9EDA-DD2E9BAFC5DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Domain", "src\AccountService.Domain\AccountService.Domain.csproj", "{C370FE14-8C56-4529-9EDA-DD2E9BAFC5DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

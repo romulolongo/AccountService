@@ -3,11 +3,11 @@ using SimpleInjector;
 
 namespace AccountService.Infra.IoC.Modules
 {
-    public static class DbContextModule
+    public static class DbContextDependencyModule
     {
         public static void Register(Container container)
         {
-            container.Register<AccountContext>(Lifestyle.Singleton);
+            container.Register<AccountContext>(Lifestyle.Scoped);
         }
     }
 }

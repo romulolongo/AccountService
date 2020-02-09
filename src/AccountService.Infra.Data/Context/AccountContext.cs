@@ -16,6 +16,7 @@ namespace AccountServices.Infra.Data.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connectionString = _configuration.GetConnectionString("AccountServiceConnectionString");
+
             optionsBuilder.UseSqlServer(connectionString, b => b.MigrationsAssembly("AccountService.Infra.Data"));
         }
 

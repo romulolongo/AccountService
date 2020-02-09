@@ -4,7 +4,7 @@ using SimpleInjector;
 
 namespace AccountService.Infra.IoC.Modules
 {
-    public static class RepositoryModule
+    public static class RepositoryDependencyModule
     {
         public static void Register(Container container)
         {
