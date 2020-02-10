@@ -20,7 +20,6 @@ namespace AccountServices.Infra.Data.Context
             optionsBuilder.UseSqlServer(connectionString, b => b.MigrationsAssembly("AccountService.Infra.Data"));
         }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AccountMapping());

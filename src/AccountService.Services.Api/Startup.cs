@@ -22,6 +22,8 @@ namespace AccountService.Services.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AccountContext>();
+
             services
                 .AddMvcCore()
                 .AddJsonFormatters()
