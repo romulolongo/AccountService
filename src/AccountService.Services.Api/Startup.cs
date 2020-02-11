@@ -1,4 +1,5 @@
 ﻿using AccountService.Infra.IoC;
+using AccountService.Services.Api.Extensions;
 using AccountServices.Infra.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,20 +31,11 @@ namespace AccountService.Services.Api
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services
-                .AddSimpleInjenctorConfiguration();
+                .AddSwaggerConfguration();
 
             services
-                .AddCors(options =>
-                {
-                    options.AddPolicy(_allowOriginPolicy,
-                    builder =>
-                    {
-                        builder
-                            .AllowAnyOrigin()
-                            .AllowAnyMethod()
-                            .AllowAnyHeader();
-                    });
-                });
+                .AddSimpleInjenctorConfiguration();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +44,7 @@ namespace AccountService.Services.Api
             app.UseSimpleInjectorConfig();
             app.UseCors(_allowOriginPolicy);
             app.UseMvcWithDefaultRoute();
+            app.UseCustomSwaggerConfig();
 
             var container = app.GetContainer();
 
